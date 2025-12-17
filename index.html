@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게임 개발자 이력서 | 노션 스타일</title>
+  <style>
+    :root {
+      --bg: #f7f6f3;
+      --panel: #ffffff;
+      --text: #202124;
+      --muted: #5f6368;
+      --accent: #5c6ac4;
+      --accent-2: #f2c94c;
+      --border: #e4e4e0;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      --radius: 14px;
+      --gap: 18px;
+      font-family: "Inter", "Noto Sans KR", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 28px 18px 80px;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 12px 0 22px;
+      background: linear-gradient(180deg, var(--bg) 60%, rgba(247, 246, 243, 0));
+      backdrop-filter: blur(6px);
+    }
+
+    .nav .breadcrumbs {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: var(--gap);
+      align-items: center;
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 20px;
+      background: conic-gradient(from 120deg, #f4e9ff, #d6e5ff, #ffe8d6, #f4e9ff);
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), var(--shadow);
+    }
+
+    .avatar::after {
+      content: "👾";
+      font-size: 54px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero .role {
+      color: var(--muted);
+      margin: 8px 0 16px;
+      font-size: 16px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 6px 0 14px;
+    }
+
+    .chip {
+      padding: 7px 11px;
+      border-radius: 10px;
+      background: #f0f2f5;
+      color: #3c4043;
+      border: 1px solid #e3e6eb;
+      font-size: 13px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: #4e5ab8;
+      box-shadow: 0 12px 25px rgba(92, 106, 196, 0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      border-color: #d7d7d2;
+    }
+
+    .grid {
+      display: grid;
+      gap: var(--gap);
+    }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    section h2 {
+      margin: 0 0 16px;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eef0f4;
+      color: #475569;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #e1e5eb;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      background: #fafaf8;
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .stack {
+      margin-top: 8px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .stack span {
+      padding: 6px 9px;
+      background: #eef2ff;
+      color: #3730a3;
+      border-radius: 8px;
+      font-size: 12px;
+      border: 1px solid #e0e7ff;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 4px;
+      bottom: 6px;
+      width: 2px;
+      background: #e0e2e7;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 16px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -3px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      background: var(--panel);
+      border: 2px solid #a3adff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px #eef2ff;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      border-radius: 10px;
+      border: 1px dashed #cdd1d8;
+      color: #455a64;
+      background: #f7f7fa;
+      font-size: 12px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--gap);
+    }
+
+    a.inline {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a.inline:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 20px 14px 60px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .avatar {
+        margin: 0 auto;
+      }
+
+      .cta-row {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="nav">
+      <div class="breadcrumbs">Resume / Game Developer</div>
+    </div>
+
+    <header class="hero">
+      <div class="avatar" aria-label="프로필 사진 자리"></div>
+      <div>
+        <h1>김플레이 (Game Developer)</h1>
+        <div class="role">실시간 게임플레이 · 엔진 · 툴링 · 멀티플레이 네트워킹</div>
+        <div class="chips">
+          <div class="chip">Unity · Unreal</div>
+          <div class="chip">C# · C++</div>
+          <div class="chip">Gameplay Systems</div>
+          <div class="chip">Tooling & Pipeline</div>
+          <div class="chip">LiveOps</div>
+          <div class="chip">Console · PC · Mobile</div>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="#" download>이력서 PDF 다운로드</a>
+          <a class="btn" href="mailto:game.dev@example.com">game.dev@example.com</a>
+          <a class="btn" href="#" target="_blank" rel="noreferrer">포트폴리오 보기</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid" style="margin-top: 22px;">
+      <section id="about">
+        <h2>👋 소개</h2>
+        <p>
+          실시간 전투 설계와 네트워크 동기화 경험을 가진 게임플레이 프로그래머입니다.
+          납기 안에 재미있는 빌드를 반복적으로 만드는 것을 선호하며, 디자이너와 아트 팀이 빠르게
+          실험할 수 있는 툴과 파이프라인을 만드는 데 강점이 있습니다. 스팀/모바일 출시 경험과
+          라이브서비스 지표 기반 개선 사이클을 경험했습니다.
+        </p>
+      </section>
+
+      <section id="skills">
+        <h2>🛠️ 스킬 스택</h2>
+        <div class="two-col">
+          <div class="card">
+            <h3>엔진 & 그래픽스</h3>
+            <div class="tag-row">
+              <span class="tag">Unity (HDRP/URP)</span>
+              <span class="tag">Unreal (C++/BP)</span>
+              <span class="tag">렌더 파이프라인 최적화</span>
+              <span class="tag">애니메이션 블렌딩</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>게임플레이</h3>
+            <div class="tag-row">
+              <span class="tag">Ability 시스템</span>
+              <span class="tag">상태 머신 · 버프/디버프</span>
+              <span class="tag">AI (BT/Utility)</span>
+              <span class="tag">Physics Interaction</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>네트워킹</h3>
+            <div class="tag-row">
+              <span class="tag">Photon · Netcode</span>
+              <span class="tag">Rollback & Input Sync</span>
+              <span class="tag">Matchmaking · 세션</span>
+              <span class="tag">Latency 보정</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>툴링 & 파이프라인</h3>
+            <div class="tag-row">
+              <span class="tag">Editor 확장</span>
+              <span class="tag">빌드 자동화 (CI/CD)</span>
+              <span class="tag">어셋 파이프라인</span>
+              <span class="tag">프로파일링 · 메모리 관리</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>협업</h3>
+            <div class="tag-row">
+              <span class="tag">Agile · Jira</span>
+              <span class="tag">Tech Design 문서화</span>
+              <span class="tag">코드 리뷰 · 컨벤션</span>
+              <span class="tag">크로스플랫폼 배포</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>기타</h3>
+            <div class="tag-row">
+              <span class="tag">C# · C++ · Python</span>
+              <span class="tag">ShaderLab · HLSL</span>
+              <span class="tag">Git · Perforce</span>
+              <span class="tag">DataDog · Grafana</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>🎮 주요 프로젝트</h2>
+        <div class="list">
+          <div class="card">
+            <h3>Project Nebula — 3D 액션 로그라이크</h3>
+            <div class="meta">
+              <span class="pill">Unity · PC/콘솔</span>
+              <span>2024 — 출시</span>
+            </div>
+            <p>코어 전투 루프, 무기 모드 시스템, 적 AI(Behavior Tree) 구현. Steam 출시 후
+              메타데이터 기반 밸런싱 패치 주도.</p>
+            <div class="stack">
+              <span>DOTS/ECS</span><span>Addressables</span><span>NavMesh</span><span>FMOD</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Starbound Arena — 실시간 PvP</h3>
+            <div class="meta">
+              <span class="pill">Unreal · Mobile/PC</span>
+              <span>2023 — Soft Launch</span>
+            </div>
+            <p>Rollback 네트코드 프로토타입, 입력 동기화, 히트판정 보정. 매치메이킹 로직과
+              리플레이 뷰어 툴 개발.</p>
+            <div class="stack">
+              <span>GAS</span><span>gRPC</span><span>Redis</span><span>PlayFab</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Forge Tools — 디자이너용 레벨링 툴킷</h3>
+            <div class="meta">
+              <span class="pill">Unity Editor 확장</span>
+              <span>2022</span>
+            </div>
+            <p>노드 기반 룰셋 에디터, CSV → ScriptableObject 파이프라인, 원클릭 빌드
+              템플릿. 에디터 툴 교육 세션 진행.</p>
+            <div class="stack">
+              <span>UI Toolkit</span><span>Roslyn Analyzer</span><span>CI/CD</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>💼 경력</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="meta">
+              <span class="pill">Senior Gameplay Programmer</span>
+              <span>Hyperfox Studio</span>
+              <span>2023.06 - 현재</span>
+            </div>
+            <p>멀티플레이 액션 게임의 전투/카메라/애니메이션 파이프라인 리드.
+              DPS 메트릭 기반 밸런싱 자동화와 플레이테스트 리플레이 뷰어 제공.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="meta">
+              <span class="pill">Gameplay/Tools Programmer</span>
+              <span>BluePeak Games</span>
+              <span>2020.03 - 2023.05</span>
+            </div>
+            <p>액션 RPG의 어빌리티 시스템 설계 및 툴킷 개발. 콘솔 전환 시 렌더링 최적화와
+              메모리 프로파일링을 담당.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="meta">
+              <span class="pill">Software Engineer (Intern)</span>
+              <span>PlayNext</span>
+              <span>2019.07 - 2020.02</span>
+            </div>
+            <p>게임 데이터 파이프라인 자동화, 빌드봇 스크립트 작성, QA용 치트 패널 제공.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <h2>📚 학력 & 기타</h2>
+        <div class="two-col">
+          <div class="card">
+            <h3>학력</h3>
+            <div class="meta">
+              <span class="pill">B.S. Computer Science</span>
+              <span>KAIST</span>
+              <span>2015 - 2020</span>
+            </div>
+            <p>게임공학 트랙, 실시간 렌더링 연구실 경험. 그래픽스·네트워크 집중.</p>
+          </div>
+          <div class="card">
+            <h3>어워드 & 발표</h3>
+            <ul style="margin: 8px 0 0 16px; padding: 0;">
+              <li>Unity Korea Awards — Technical Art 부문 최우수상</li>
+              <li>GDC 2024 Lightning Talk — "Rollback 튜닝 노트"</li>
+              <li>학교 e스포츠 해커톤 — Best Game Play상</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="links">
+        <h2>🔗 링크</h2>
+        <div class="grid" style="gap: 10px;">
+          <a class="btn" href="#" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="#" target="_blank" rel="noreferrer">ArtStation</a>
+          <a class="btn" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="#" target="_blank" rel="noreferrer">Notion 포트폴리오</a>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      노션 감성의 가벼운 이력서 템플릿 · 색상과 텍스트를 자유롭게 수정하세요.
+    </footer>
+  </div>
+</body>
+</html>
+
